@@ -10,4 +10,26 @@ def can_construct(ransomNote: str, magazine: str) -> bool:
     Returns:
         bool: True if ransomNote can be constructed, False otherwise.
     """
-    pass  # TODO: Implement this function
+    # TODO: Implement this function
+
+    letter_count = {} #hash table
+
+    # populate hash table
+    for letter in magazine:
+        if letter in letter_count:
+            letter_count[letter] += 1
+        else:
+            letter_count[letter] = 1
+
+    # Check each character in ransomNote
+    for l in ransomNote:
+        if l not in letter_count or letter_count[l]==0:
+            return False
+        letter_count[l] -= 1
+
+    # All characters matched
+    return True
+        
+
+
+
